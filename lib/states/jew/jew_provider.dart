@@ -40,14 +40,15 @@ class JewProvider extends ChangeNotifier{
     notifyListeners();
   }
 
-  addToCart (Jew jew){
-    final List<Jew> cartList = _state.jewList.map((element) {
+  addToCart(Jew jew) {
+    final List<Jew> updatedJewList = _state.jewList.map((element) {
       if (element.id == jew.id) {
-        return jew.copyWith(cart:true);
+        return jew.copyWith(cart: true, quantity: (element.quantity ?? 0));
       }
       return element;
     }).toList();
-    _state = _state.copyWith(jewList: cartList);
+
+    _state = _state.copyWith(jewList: updatedJewList);
     notifyListeners();
   }
 

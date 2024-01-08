@@ -115,7 +115,7 @@ class JewDetail extends StatelessWidget {
                             builder: (context, jewProvider, child) {
                               final int jewIndex = context.read<JewProvider>().state.jewList.indexWhere((element) => element.id == jew.id);
                               if (jewIndex != -1) {
-                                final int quantity = context.read<JewProvider>().state.jewList[jewIndex].quantity;
+                                final int quantity = context.watch<JewProvider>().state.jewList[jewIndex].quantity;
                                 return CounterButton(
                                   onIncrementTap: () {
                                     jewProvider.increaseQuantity(jew);
